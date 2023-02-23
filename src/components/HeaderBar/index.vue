@@ -19,10 +19,10 @@ div
             v-spacer
             div.pa-2
                 v-icon(color="white") mdi-home 
-                span.white--text.hidden-sm-and-down Trang chu
+                span.white--text.hidden-sm-and-down Home page
             div.pa-2
                 v-icon(color="white") mdi-account 
-                span.white--text.hidden-sm-and-down Tai Khoan
+                span.white--text.hidden-sm-and-down Account
             div
                 v-btn(icon)
                     v-icon(color="white") mdi-cart-outline
@@ -31,12 +31,13 @@ div
                     v-icon(color="white") mdi-menu
             //- h1.white--text Home page
             v-spacer
+            
         v-divider(color="white")
-        .pc.category.max-width.center.hidden-md-and-down
+        .pc.category.max-width.center.hidden-md-down
             ul
-                li.pa-2.white--text(v-for="categoryTop in categoriesTop")
+                li.pa-2.white--text(v-for="categoryTop in categoriesTop" @click="gotoProductsPage(categoryTop)")
                     span {{ categoryTop }}
-        .center.hidden-md-and-up
+        .center.hidden-md-up
             v-expand-transition
                 v-card(
                     color="#f57e2e"
@@ -44,18 +45,27 @@ div
                     class="mx-auto"
                 )
                     ul
-                        li.pa-2.white--text(v-for="categoryTop in categoriesTop")
+                        li.pa-2.white--text(v-for="categoryTop in categoriesTop" @click="gotoProductsPage(categoryTop)")
                             span {{ categoryTop }}
 </template>
 
 <script>
+import router from '@/router';
+import {urlPath} from '@/utils'
+
 const HeaderBar = {
     data(){
         return{
             isShowCategoryInMobile: false,
-            categoriesTop: ['Trang chu', 'Noi bat', 'Giam Gia', 'Ban chay', 'San pham moi', 'San pham theo hang']
+            categoriesTop: ['Home page', 'Outstanding', 'Discount', 'Selling', 'New product', 'Products by row']
         }
     },
+    methods: {
+        gotoProductsPage(catName) {
+            if (catName == this.categoriesTop[0]) router.push({name: urlPath.Home.name})
+            else router.push({name: urlPath.Products.name})
+        }
+    }
 }
 
 export default HeaderBar
