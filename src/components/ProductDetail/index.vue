@@ -62,7 +62,7 @@ const ProductDetail = {
     },
     methods: {
         changeQuantity(action) {
-            if(this.product.quantity === 0 && action === '-') return 
+            if(this.product.quantity === 0 && action === '-') return
             if (action === '+') this.product.quantity += 1
             if (action === '-') this.product.quantity -= 1
         }
