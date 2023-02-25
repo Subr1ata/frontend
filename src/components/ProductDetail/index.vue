@@ -38,6 +38,13 @@ div
                 :value="product.quantity"
                 @change-value="changeQuantity($event)"
             )
+            // cancel float left
+            div(style="clear: both;")
+            v-list-item.pa-0
+                v-btn(color="#f57e2e" :disabled="product.quantity === 0").white--text.align-left.mt-2 Buy Now
+                v-btn.align-left.mt-2.ml-2(:disabled="product.quantity === 0")
+                    span.color-main Add to Cart
+    
 </template>
 
 <script>
@@ -56,8 +63,46 @@ const ProductDetail = {
                 sales: 1634,
                 price: '₹398',
                 cost: '₹500',
-                quantity: 0
-            }
+                quantity: 1
+            },
+            products: [
+                {
+                    img: 'https://salt.tikicdn.com/cache/280x280/ts/product/07/e8/01/f544cc482d2988355b5d80590b503c35.jpg.webp',
+                    name: 'Kemin K20 - 20L car refrigerator',
+                    star: 5,
+                    sales: 1000,
+                    price: '1,000,000',
+                    cmt: 'Up to 34 ASA (8k) 2.4% cashback',
+                    shipCmt: 'Delivery all, weekdays'
+                },
+                {
+                    img: 'https://salt.tikicdn.com/cache/280x280/ts/product/5f/34/c5/f8dfba6a9d5f0c5039ac60a3d5f52b75.jpg.webp',
+                    name: 'Kemin K20 - 20L car refrigerator',
+                    star: 4,
+                    sales: 1000,
+                    price: '1,000,000',
+                    cmt: 'Up to 34 ASA (8k) 2.4% cashback',
+                    shipCmt: 'Delivery all, weekdays'
+                },
+                {
+                    img: 'https://salt.tikicdn.com/cache/280x280/media/catalog/producttmp/94/e5/e2/7a9f6c6229ee8bd7c0936bc3d02274f9.png.webp',
+                    name: 'Kemin K20 - 20L car refrigerator',
+                    star: 3,
+                    sales: 1000,
+                    price: '1,000,000',
+                    cmt: 'Up to 34 ASA (8k) 2.4% cashback',
+                    shipCmt: 'Delivery all, weekdays'
+                },
+                {
+                    img: 'https://salt.tikicdn.com/cache/280x280/ts/product/3d/f0/3c/e7b128fc34b08ec89aad89effe724493.png.webp',
+                    name: 'Kemin K20 - 20L car refrigerator',
+                    star: 3,
+                    sales: 1000,
+                    price: '1,000,000',
+                    cmt: 'Up to 34 ASA (8k) 2.4% cashback',
+                    shipCmt: 'Delivery all, weekdays'
+                },
+            ]
         }
     },
     methods: {
@@ -84,4 +129,6 @@ export default ProductDetail
     border-radius: 5px
 .title-discount
     font-size: 18px
+.color-main
+    color: #f57e2e
 </style>
