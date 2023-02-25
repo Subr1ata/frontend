@@ -1,5 +1,5 @@
 <template lang="pug">
-.max-width-product-component.float-left
+.max-width-product-component.float-left(@click="onClick()")
     v-img.max-width-product-component(:src="product.img")
     .product-name.align-left
         span {{ product.name }}
@@ -16,11 +16,21 @@
 </template>
 
 <script>
+import router from '@/router';
+import { urlPath } from '@/utils';
+
 const SubProduct = {
     props:['product'],
     data() {
         return {
             
+        }
+    },
+    methods: {
+        onClick(){
+            router.push({
+                name: urlPath.ProductDetail.name
+            })
         }
     }
 }

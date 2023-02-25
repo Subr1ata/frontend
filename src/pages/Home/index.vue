@@ -120,7 +120,7 @@ const Home = {
                 },
             ]
         }
-    }
+    },
 }
 export default Home
 </script>

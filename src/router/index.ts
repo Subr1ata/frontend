@@ -17,7 +17,12 @@ const routes: Array<RouteConfig> = [
     path: urlPath.Products.path,
     name: urlPath.Products.name,
     component: () => import('../pages/Products/index.vue')
-  }
+  },
+  {
+    path: urlPath.ProductDetail.path,
+    name: urlPath.ProductDetail.name,
+    component: () => import('../pages/Products/detail.vue')
+  },
 ]
 
 const router = new VueRouter({
