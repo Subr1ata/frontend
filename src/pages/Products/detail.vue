@@ -2,7 +2,7 @@
 div
     header-bar
     .max-width.center
-        product-detail.max-width.center.pt-10
+        product-detail.max-width.center.pt-10(:screen-type="screenType")
         v-divider.mt-5
         h1.color-main.text-center Similar product
         .list-product
@@ -27,6 +27,7 @@ const detail = {
     },
     data() {
         return {
+            screenType: 'pc',
             products: [
                 {
                     img: 'https://salt.tikicdn.com/cache/280x280/ts/product/07/e8/01/f544cc482d2988355b5d80590b503c35.jpg.webp',
@@ -103,11 +104,19 @@ const detail = {
             ]
         }
     },
+    mounted() {
+        const widthScreen = screen.width
+        if (widthScreen > 1000) this.screenType = 'pc'
+        else if (widthScreen > 600) this.screenType = 'tab'
+        else this.screenType = 'mobile'
+    },
     methods: {
         onScrollX(action){
-            console.log(this.$refs.listProduct);
-            if(action === 'prev') this.$refs.listProduct.scrollLeft -= 150
-            if(action === 'next') this.$refs.listProduct.scrollLeft += 150
+            let pos = this.$refs.listProduct.scrollLeft
+            if (pos < 0) return
+            if (action === 'prev') pos -= 300
+            if (action === 'next') pos += 300
+            this.$refs.listProduct.scroll({left: pos, behaviour: 'smooth'})
         }
     }
 }
