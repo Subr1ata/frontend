@@ -23,6 +23,15 @@ const routes: Array<RouteConfig> = [
     name: urlPath.ProductDetail.name,
     component: () => import('../pages/Products/detail.vue')
   },
+  {
+    path: '/input',
+    component: () => import('../pages/Input/index.vue')
+  },
+  {
+    path: urlPath.ADMIN.path,
+    name: urlPath.ADMIN.name,
+    component: () => import('../pages/Admin/index.vue')
+  },
 ]
 
 const router = new VueRouter({
